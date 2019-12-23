@@ -1,7 +1,5 @@
 package com.example.youtubeparcer.ui
-import android.content.Context
 import android.content.Intent
-import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -19,8 +17,6 @@ import com.example.youtubeparcer.utils.isShow
 import kotlinx.android.synthetic.main.activity_main.*
 @Suppress("DEPRECATION", "UNREACHABLE_CODE")
 class MainActivity : AppCompatActivity() {
-
-
     private var viewModel: MainViewModel? = null
     private var adapter: PlaylistAdapter? = null
 
@@ -31,14 +27,11 @@ class MainActivity : AppCompatActivity() {
         initAdapter()
         fetchPlaylist()
     }
-
     private fun initAdapter() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         adapter = PlaylistAdapter() {item: ItemsItem -> clickItem(item)}
         recycler_view.adapter = adapter
-
     }
-
     private fun clickItem(item: ItemsItem) {
         val intent = Intent(this, DetailPlaylistActivity::class.java)
         intent.putExtra("id", item.id)
